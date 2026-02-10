@@ -8,7 +8,6 @@ It includes basic API routes and demonstrates how to build and run a FastAPI app
 ## 🚀 Features
 
 - FastAPI setup
-- 3 basic API routes
 - Simple in-memory data (BOOKS list)
 - Automatic Swagger documentation
 
