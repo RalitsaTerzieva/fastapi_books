@@ -18,6 +18,36 @@ BOOKS = [
         "title": "Atomic Habits",
         "author": "James Clear",
         "category": "Self Development"
+    },
+    {
+        "id": 4,
+        "title": "Deep Work",
+        "author": "Cal Newport",
+        "category": "Productivity"
+    },
+    {
+        "id": 5,
+        "title": "Refactoring",
+        "author": "Martin Fowler",
+        "category": "Programming"
+    },
+    {
+        "id": 6,
+        "title": "Design Patterns",
+        "author": "Erich Gamma",
+        "category": "Software Engineering"
+    },
+    {
+        "id": 7,
+        "title": "The Lean Startup",
+        "author": "Eric Ries",
+        "category": "Business"
+    },
+    {
+        "id": 8,
+        "title": "Thinking, Fast and Slow",
+        "author": "Daniel Kahneman",
+        "category": "Psychology"
     }
 ]
 
