@@ -101,11 +101,9 @@ Explanation of the Dockerfile steps:
 | `FROM python:3.11` | Uses an official Python base image |
 | `WORKDIR /app` | Sets the working directory inside the container |
 | `COPY requirements.txt .` | Copies dependency file into the container |
-| `RUN pip install -r requirements.txt` | Installs project dependencies |
+| `RUN pip install --no-cache-dir -r requirements.txt` | Installs project dependencies without caching to reduce image size |
 | `COPY . .` | Copies the project source code |
 | `CMD` | Starts the FastAPI application using Uvicorn |
-
----
 
 
 ### 🔨 Step 2: Build the Docker Image
