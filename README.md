@@ -164,3 +164,42 @@ Using Docker provides several advantages:
 - Faster onboarding for new developers
 
 ---
+
+### 🚢 Publishing the Docker Image to Docker Hub (Optional)
+
+If you want to share your image, you can push it to your own Docker Hub account.
+
+First, tag the image with your Docker Hub repository name:
+
+```bash
+docker tag fastapi-books <your-dockerhub-username>/fastapi-docker:latest
+```
+
+Example (replace with your username):
+
+```bash
+docker tag fastapi-books johnsmith/fastapi-docker:latest
+```
+
+Then log in to Docker Hub:
+
+```bash
+docker login
+```
+
+Finally, push the image:
+
+```bash
+docker push <your-dockerhub-username>/fastapi-docker:latest
+```
+
+Anyone can pull and run it:
+
+```bash
+docker pull <your-dockerhub-username>/fastapi-docker:latest
+docker run -p 8000:8000 <your-dockerhub-username>/fastapi-docker
+```
+
+This uses your personal repository on Docker Hub so images are tied to your account.
+
+---
