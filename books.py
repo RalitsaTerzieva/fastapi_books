@@ -104,3 +104,4 @@ async def delete_book(book_id: int):
         if BOOKS[i].get('id') == book_id:
             BOOKS.pop(i)
             return {"message": "Book deleted successfully!"}
+
