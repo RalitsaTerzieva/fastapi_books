@@ -50,13 +50,13 @@ pip install "fastapi[standard]"
 ▶️ Run the Application
 
 ```
-fastapi dev main.py
+fastapi dev books.py
 ```
 
 Or using uvicorn:
 
 ```
-uvicorn main:app --reload
+uvicorn books:app --reload
 ```
 
 ---
