@@ -20,7 +20,7 @@ class Book:
 
 class BookRequest(BaseModel):
     id: int
-    title: str
+    title: str = Field(min_length=3)
     author: str
     description: str
     rating: int
