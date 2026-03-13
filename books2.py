@@ -21,8 +21,8 @@ class Book:
 class BookRequest(BaseModel):
     id: int
     title: str = Field(min_length=3)
-    author: str
-    description: str
+    author: str = Field(min_length=1)
+    description: str = Field(min_length=1, max_length=200)
     rating: int
 
 
