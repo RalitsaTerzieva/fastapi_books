@@ -54,6 +54,7 @@ pytest_cache/
 # Environment variables
 .env
 .env.*
+!.env.example
 
 # Logs
 *.log
