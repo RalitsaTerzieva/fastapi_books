@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Optional
+import redis
 
 app = FastAPI()
+cache = redis.Redis(host='redis', port=6379)
 
 class Book:
     id: int
