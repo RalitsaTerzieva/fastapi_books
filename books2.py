@@ -55,10 +55,20 @@ async def read_all_books():
     return BOOKS
 
 
+@app.get("/books/{book_id}")
+async def get_book_by_id(book_id: int):
+    for book in BOOKS:
+        if book.id == book_id:
+            return book
+
+
 @app.post("/create_book")
 async def create_book(book_request: BookRequest):
     new_book = Book(**book_request.model_dump())
-    BOOKS.append(find_book_id(new_book))
+    find_book_id(new_book)
+    BOOKS.append(new_book)
+
+    return {"message": "Book created"}
 
 
 def find_book_id(book: Book):
