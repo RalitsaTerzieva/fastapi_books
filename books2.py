@@ -60,6 +60,11 @@ async def get_book_by_id(book_id: int):
     for book in BOOKS:
         if book.id == book_id:
             return book
+        
+
+@app.get("/books/")
+async def get_books_by_rating(rating: int):
+    return [book for book in BOOKS if book.rating == rating]
 
 
 @app.post("/create_book")
