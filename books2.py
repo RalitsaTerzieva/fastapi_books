@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
 from pydantic import BaseModel, Field
 from typing import Optional
 import redis
@@ -61,7 +61,7 @@ async def read_all_books():
 
 
 @app.get("/books/{book_id}")
-async def get_book_by_id(book_id: int):
+async def get_book_by_id(book_id: int = Path(gt=0)):
     for book in BOOKS:
         if book.id == book_id:
             return book
@@ -100,7 +100,7 @@ async def update_book(book: BookRequest):
             BOOKS[index] = Book(**book.model_dump())
 
 @app.delete("/books/delete_book/{book_id}")
-async def delete_book(book_id: int):
+async def delete_book(book_id: int = Path(gt=0)):
     for index, b in enumerate(BOOKS):
         if b.id == book_id:
             del BOOKS[index]
