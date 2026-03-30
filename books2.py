@@ -31,6 +31,7 @@ class BookRequest(BaseModel):
     author: str = Field(min_length=1)
     description: str = Field(min_length=1, max_length=200)
     rating: int = Field(gt=0, lt=6)
+    published_data: Optional[int] = Field(gt=0, lt=2026)
 
     model_config = {
         "json_schema_extra": {
@@ -38,7 +39,7 @@ class BookRequest(BaseModel):
                 "title": "The Great Gatsby",
                 "author": "F. Scott Fitzgerald",
                 "description": "A classic American novel set in the Jazz Age.",
-                "rating": 5
+                "rating": 5,
             }
         }
     }
@@ -46,12 +47,12 @@ class BookRequest(BaseModel):
 
 
 BOOKS = [
-    Book(1, "Clean Code", "Robert C. Martin", "A guide to writing clean and maintainable code.", 5),
-    Book(2, "The Pragmatic Programmer", "Andrew Hunt", "Best practices and philosophy of software development.", 5),
-    Book(3, "Design Patterns", "Erich Gamma", "Classic book about reusable software design patterns.", 5),
-    Book(4, "Atomic Habits", "James Clear", "How small habits create big improvements in life.", 4),
-    Book(5, "Deep Work", "Cal Newport", "Strategies for focused success in a distracted world.", 4),
-    Book(6, "Python Crash Course", "Eric Matthes", "Beginner-friendly introduction to Python programming.", 4),
+    Book(1, "Clean Code", "Robert C. Martin", "A guide to writing clean and maintainable code.", 5, 2000),
+    Book(2, "The Pragmatic Programmer", "Andrew Hunt", "Best practices and philosophy of software development.", 5, 2002),
+    Book(3, "Design Patterns", "Erich Gamma", "Classic book about reusable software design patterns.", 5, 2001),
+    Book(4, "Atomic Habits", "James Clear", "How small habits create big improvements in life.", 4, 2018),
+    Book(5, "Deep Work", "Cal Newport", "Strategies for focused success in a distracted world.", 4, 2017),
+    Book(6, "Python Crash Course", "Eric Matthes", "Beginner-friendly introduction to Python programming.", 4, 2019),
 ]
 
 @app.get("/books")
