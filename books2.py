@@ -72,6 +72,11 @@ async def get_books_by_rating(rating: int):
     return [book for book in BOOKS if book.rating == rating]
 
 
+@app.get("/books/published/")
+async def get_book_by_published_date(published_date: int):
+    return [book for book in BOOKS if book.published_data == published_date]
+
+
 @app.post("/create_book")
 async def create_book(book_request: BookRequest):
     new_book = Book(**book_request.model_dump())
