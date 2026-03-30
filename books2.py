@@ -12,13 +12,17 @@ class Book:
     author: str
     description: str
     rating: int
+    published_data: int
 
-    def __init__(self, id: int, title: str, author: str, description: str, rating: int):
+    def __init__(self, id: int, title: str, author: str, description: str, rating: int, published_data: int):
         self.id = id
         self.title = title
+
         self.author = author
         self.description = description
         self.rating = rating
+        self.published_data = published_data
+
 
 
 class BookRequest(BaseModel):
@@ -88,4 +92,9 @@ async def update_book(book: BookRequest):
     for index, b in enumerate(BOOKS):
         if b.id == book.id:
             BOOKS[index] = Book(**book.model_dump())
-            
+
+@app.delete("/books/delete_book/{book_id}")
+async def delete_book(book_id: int):
+    for index, b in enumerate(BOOKS):
+        if b.id == book_id:
+            del BOOKS[index]
