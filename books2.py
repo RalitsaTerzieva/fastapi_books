@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query, HTTPException
 from pydantic import BaseModel, Field
 from typing import Optional
 import redis
@@ -65,15 +65,16 @@ async def get_book_by_id(book_id: int = Path(gt=0)):
     for book in BOOKS:
         if book.id == book_id:
             return book
+    raise HTTPException(status_code=404, detail="Item not found!")
         
 
 @app.get("/books/")
-async def get_books_by_rating(rating: int):
+async def get_books_by_rating(rating: int = Query(gt=0, lt=6)):
     return [book for book in BOOKS if book.rating == rating]
 
 
 @app.get("/books/published/")
-async def get_book_by_published_date(published_date: int):
+async def get_book_by_published_date(published_date: int = Query(gt=0, lt=2040)):
     return [book for book in BOOKS if book.published_data == published_date]
 
 
