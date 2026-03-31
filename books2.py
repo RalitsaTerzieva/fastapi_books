@@ -96,9 +96,13 @@ def find_book_id(book: Book):
 
 @app.put("/books/update_book")
 async def update_book(book: BookRequest):
+    book_changed = False
     for index, b in enumerate(BOOKS):
         if b.id == book.id:
             BOOKS[index] = Book(**book.model_dump())
+            book_changed = True
+    if not book_changed:
+        raise HTTPException(status_code=404, detail="Item not found!")
 
 @app.delete("/books/delete_book/{book_id}")
 async def delete_book(book_id: int = Path(gt=0)):
