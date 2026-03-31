@@ -106,6 +106,10 @@ async def update_book(book: BookRequest):
 
 @app.delete("/books/delete_book/{book_id}")
 async def delete_book(book_id: int = Path(gt=0)):
+    book_deleted = False
     for index, b in enumerate(BOOKS):
         if b.id == book_id:
             del BOOKS[index]
+            book_deleted = True
+    if not book_deleted:
+        raise HTTPException(status_code=404, detail="Item not found!")
